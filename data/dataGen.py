@@ -6,6 +6,8 @@ file_content = "test"
 opt_dataSet_name = "Test"
 ##############################
 
+def writeFileContent():
+    return
 
 # writes to json file
 def writeFile(in_file_content: str) -> None:

@@ -1,0 +1,11 @@
+{
+    "swear_words" : [
+        "fuck", "fucker", "motherfucker", "fucking", "shit", "damn", "damnit", "goddamn", "ass", "asshole",
+        "bastard", "bitch", "bullshit", "clusterfuck", "dumbass", "retard", "retarded", "motherfucking", "bitching",
+    ],
+
+    "racist_derogatory_words" : [
+        "nigger", "faggot", "nigga", "coon", "cracker", "twink", "cunt", "fag", "chink", "gook",
+        "jap",
+    ],
+}
