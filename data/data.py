@@ -33,15 +33,14 @@ class User:
         self.malicious_flag = False
 
     def addMessage(self, message: Message):
-            self.history.append(message)
-        
+        self.history.append(message)
     
     def getMessageHistory(self):
-            return self.history
+        return self.history
         
     def getScore(self):
-            self.total_score = sum(msg.malicious_score for msg in self.history)
-            return self.total_score
+        self.total_score = sum(msg.malicious_score for msg in self.history)
+        return self.total_score
     
     def calculateMalicious(self, threshold: int = 50) -> bool:
          self.malicious_flag = self.getScore >= threshold
