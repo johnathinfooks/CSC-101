@@ -1,5 +1,5 @@
 {
-    "random_words" : [
+    "safe_words" : [
         "the", "and", "or", "but", "if", "then", "when", "while", "because", "although",
         "in", "on", "at", "by", "for", "with", "about", "against", "between", "through",
         "before", "after", "above", "below", "under", "over", "again", "further", "once", "here",
