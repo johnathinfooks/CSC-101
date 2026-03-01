@@ -2,6 +2,40 @@ import data
 import dataGen
 import json
 
+def loadChannelData(filepath: str = "dataGen/users.json") -> dict[int, data.Users]:
+        with open(filepath, 'r') as file:
+             users_data = json.load(file)
+
+        channel = {}
+
+        for user_data in users_data:
+             user_id = user_data["user_id"]
+             username = user_data["username"]
+             channel_id = user_data.get("channel", 1)
+
+             user = data.User(user_id, username, channel_id)
+
+             for msg_data in user_data["messages"]:
+                  message = data.Message(
+                       user_id = user_id,
+                       content=msg_data["content"],
+                       timestamp = msg_data["timestamp"]
+                       )
+                  user.addMessage(message)
+        channel[user_id] = user
+        return channel
+
+def analyzeChannel(channel: dict[int, data.User], threshold: int = 50) -> list[data.User]:
+     badUsers= []
+     danger_words = data.loadDangerWords("dataGen/danger.json")
+     for user_id, user in channel.items():
+          for message in user.getMessageHistory():
+               message.checkMalicious(danger_words)
+
+          user.checkSpamming(time_window=60)
+          if user.calculateMalicious(threshold):
+               badUsers.append(user)
+     return badUsers
 
 def displayResults(channel: dict[int, data.User], malicious_users: list[data.User]):
     print("\n" + "="*60)
@@ -46,3 +80,19 @@ def main():
     print("Message Flagger Program")
     print("Loading data...\n")
 
+    try:
+         channel = loadChannelData("dataGen/users.json")
+
+         threshold = 50 # Adjustable: lower = stricter
+         malicious_users = analyzeChannel(channel, threshold)
+
+         displayResults(channel, malicious_users)
+    except FileNotFoundError as e:
+         print(f" Error: Could not find required data files. Make sure users.json and danger.json exist in dataGen/")
+         print(f"An error has occurred: {e}")
+
+    return None
+    
+
+if __name__ == "__main__":
+     main()
