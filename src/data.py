@@ -7,7 +7,7 @@ class Message:
         self.content = content.lower()
         self.timestamp = timestamp
         self.malicious_score = 0
-        
+
     def checkMalicious(self, danger_words:dict) -> bool:
         swear_words = danger_words.get("swear words", [])
         racist_words = danger_words.get("racist_derogatory_words", [])
