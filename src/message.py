@@ -15,20 +15,28 @@ class Message:
 
         return s
 
-    def check_malicious(self) -> int:
+    def check_malicious(self) -> int | None:
 
         amount_danger_words = 0
-
         danger_words = []
-        with open("../data/dataGen/danger.json", "r") as df:
-            danger_words = json.load(df)
 
-        message_arr = self.content.split()
+        try:
+            with open("../data/dataGen/danger.json", "r") as df:
+                danger_words = json.load(df)
 
-        for word in message_arr:
-            if word in danger_words:
-                amount_danger_words += 1
+            message_arr = self.content.split()
 
-        return amount_danger_words
+            for word in message_arr:
+                if word in danger_words:
+                    amount_danger_words += 1
+
+            return amount_danger_words
+
+        except FileNotFoundError as e:
+            print(f"File not found; {e}.")
+            return None
+        except:
+            print("Error.")
+            return None
 
 
