@@ -1,5 +1,7 @@
-from user import *
-from message import *
+import os
+
+from .user import *
+from .message import *
 
 def populate(dataset_path: str) -> dict[int, list[Message]] | None:
 
@@ -31,3 +33,11 @@ def populate(dataset_path: str) -> dict[int, list[Message]] | None:
     return out
 
 
+def clear_terminal():
+    # Check if the operating system is Windows ('nt') or Posix (Linux, macOS, Unix)
+    if os.name == 'nt':
+        # Command for Windows
+        _ = os.system('cls') 
+    else:
+        # Command for Linux, macOS, etc.
+        _ = os.system('clear')

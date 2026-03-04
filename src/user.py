@@ -1,4 +1,4 @@
-from src.message import *
+from .message import *
 
 class User:
 
