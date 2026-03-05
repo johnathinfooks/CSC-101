@@ -14,6 +14,10 @@ class Message:
         '''
 
         return s
+    
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, Message):
+            return False
 
     def check_malicious(self) -> int | None:
 
