@@ -15,7 +15,17 @@ opening_string = '''
 
     0 - Exit
 '''
+dataset_menu =  '''
+List of datasets
+'''
 
+flagged_users = '''
+    ================================================
+                    Flagged Users
+    ================================================
+        {list_flagged}
+
+'''
 # runtime loop
 
 last_command = ""
@@ -40,6 +50,12 @@ while (True):
             print("Exit")
             exit()
 
+        case '1':
+            print()
+        case '2':
+            print(dataset_menu)
+        case '3':
+            print(flagged_users)
         case _:
             last_command = f"Incorrect Input: {user_input}"
 

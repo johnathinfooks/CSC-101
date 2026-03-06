@@ -32,6 +32,17 @@ def populate(dataset_path: str) -> dict[int, list[Message]] | None:
 
     return out
 
+def listDataSets() -> list[str]:
+    data_path = "dataSet"
+    files = []
+    if not os.path.exists(data_path):
+        print("Error: {} not found").format(data_path)
+        return []
+    for i in os.listdir(data_path):
+        if i.endswith('.json'):
+            files.append(i)
+    return sorted(files)
+
 
 def clear_terminal():
     # Check if the operating system is Windows ('nt') or Posix (Linux, macOS, Unix)

@@ -20,3 +20,10 @@ class User:
         '''
 
         return s
+    
+def display_flagged_users(users: list[User], threshold: int) -> str:
+    flagged_list = []
+    for i in users:
+        if i.malicious_flag == True:
+            flagged_list.append[i]
+    print(f"Flagged:{flagged_list}")
