@@ -1,4 +1,3 @@
-from datetime import datetime
 import json
 import random
 
@@ -12,7 +11,9 @@ def generateMessage(amount_malicious: int, num_words: int) -> dict | None:
             danger_words = json.load(df)
 
             message_arr = []
-            # if amount_malicious is 0, every word is safe. if greater, then its every nth word is dangerous (1 is every word dangerous, 2 is every other word, etc)
+
+            # if amount_malicious is 0, every word is safe. if greater, then its every nth word is dangerous
+            # (1 is every word dangerous, 2 is every other word, etc)
             for i in range(num_words):
                 if amount_malicious == 0:
                     message_arr.append(random.choice(safe_words))
@@ -53,11 +54,9 @@ def writeFileContent(max_amount_malicious: int, max_num_words: int, max_num_mess
             rand_user = random.choice(user_data)
 
             element = {
-                "name": rand_user["name"],
+                # "name": rand_user["name"],
                 "id": rand_user["id"],
                 "messages": messages_arr,
-                "flagged": False,
-                "malicious_score": 0
             }
 
         return element
@@ -72,9 +71,7 @@ def writeFileContent(max_amount_malicious: int, max_num_words: int, max_num_mess
 # writes content to json file
 def writeFile(in_file_content: list, name: str) -> None:
     try:
-        c_t = datetime.now() # current time
-        timestamp = c_t.strftime("%d%b%y-%H:%M").upper()
-        filename = f"../dataSets/dataSet-{timestamp}-[{name}].json"
+        filename = f"../dataSets/{name}.json"
 
         with open(filename, "w") as f:
             json.dump(in_file_content, f, indent=4)
