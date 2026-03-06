@@ -36,7 +36,7 @@ def listDataSets() -> list[str]:
     data_path = "dataSet"
     files = []
     if not os.path.exists(data_path):
-        print("Error: {} not found").format(data_path)
+        print(f"Error: {data_path} not found")
         return []
     for i in os.listdir(data_path):
         if i.endswith('.json'):

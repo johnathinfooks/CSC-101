@@ -15,17 +15,28 @@ opening_string = '''
 
     0 - Exit
 '''
+################################################################
 dataset_menu =  '''
 List of datasets
 '''
+files = listDataSets()
+idx = 1
+for filename in files:
+    dataset_menu += f"\n [{idx}] {filename}"
+    idx +=1
+dataset_menu += "\n\n       Select dataset:"
+
+################################################################
 
 flagged_users = '''
-    ================================================
+    
                     Flagged Users
     ================================================
         {list_flagged}
 
 '''
+################################################################
+
 # runtime loop
 
 last_command = ""
@@ -51,11 +62,13 @@ while (True):
             exit()
 
         case '1':
-            print()
+            print("Help Info Here!")
+            input("Press Enter to continue")
         case '2':
             print(dataset_menu)
+            input("Press Enter to continue")
         case '3':
-            print(flagged_users)
+            input("Press Enter to continue")
         case _:
             last_command = f"Incorrect Input: {user_input}"
 
