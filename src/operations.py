@@ -43,17 +43,7 @@ def handle_operations(argv_l: list, ROOT_DIR) -> None:
                 op_info()
 
             case "users":
-<<<<<<< Updated upstream
-                save_output(
-                    op_dangerous_users,
-                    "output.txt",
-                    argv_l[2], 
-                    ROOT_DIR
-                    )
-
-=======
-                op_dangerous_users(argv_l[2], argv_l[3], ROOT_DIR)
->>>>>>> Stashed changes
+                op_dangerous_users(argv_l[2], int(argv_l[3]), ROOT_DIR)
 
     except Exception as e:
         p_err("operations", "handle_operations", str(e), True)
@@ -80,11 +70,14 @@ def op_info() -> None:
 
 
 
-def op_dangerous_users(inp: str, amt_dng_wds_for_flag: int, ROOT_DIR) -> None:
+def op_dangerous_users(dataset_name: str, amt_dng_wds_for_flag: int, ROOT_DIR) -> None:
+
     try:
-        # name = input("Name of dataset: ")
-        data_path = os.path.join(ROOT_DIR, f"data/dataSets/{inp}")
+        data_path = os.path.join(ROOT_DIR, f"data/dataSets/{dataset_name}")
         analysis(populate(data_path), amt_dng_wds_for_flag)
 
     except Exception as e:
         p_err("operations", "op_dangerous_user", str(e), False)
+
+
+

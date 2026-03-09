@@ -24,6 +24,7 @@ def p_err(file: str, func: str, msg: str, crash: bool):
         return
 
 def save_output(func, file: str = "output.txt", *args, **kwargs):
+
     original = sys.stdout
 
     try:

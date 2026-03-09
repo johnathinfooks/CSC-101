@@ -22,6 +22,9 @@ def analysis(in_users: list[User], lower: int) -> list[User]:
 
         u.malicious_score = amount_dangerous
 
+        if u.malicious_score > int(lower):
+            u.malicious_flag = True
+
         out.append(u)
 
     return out
