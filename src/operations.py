@@ -26,8 +26,15 @@ info_s = '''
 
 def handle_operations(argv_l: list, ROOT_DIR) -> None:
 
+    if len(argv_l) < 2:
+        print("use 'help' for help to use tool")
+        exit()
+
     try:
         match argv_l[1]:
+
+            case None:
+                print("use 'help' for help to use tool")
 
             case "help":
                 op_help()

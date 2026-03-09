@@ -11,14 +11,16 @@ def analysis(in_users: list[User]) -> list[User]:
     out = []
 
     for user in in_users:
+
         msg_h = user.message_history
 
-        amt_danger_wds = 0
-        for msg in msg_h:
-            amt_danger_wds = msg.check_malicious()
-
         u = User(user.name, user.id, user.message_history)
-        u.malicious_score = amt_danger_wds
+
+        amount_dangerous = 0
+        for msg in msg_h:
+            amount_dangerous += msg.check_malicious()
+
+        u.malicious_score = amount_dangerous
 
         out.append(u)
 
