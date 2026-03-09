@@ -29,17 +29,20 @@ def handle_operations(argv_l: list, ROOT_DIR) -> None:
     try:
         match argv_l[1]:
 
-            case None:
-                print("use 'help' for help to use tool")
-
             case "help":
+                if len(argv_l) != 2:
+                    raise Exception
                 op_help()
 
             case "info":
+                if len(argv_l) != 2:
+                    raise Exception
                 op_info()
 
             case "analysis":
                 op_dangerous_users(argv_l[2], int(argv_l[3]), argv_l[4], ROOT_DIR)
+                if len(argv_l) != 4:
+                    raise Exception
 
             case _:
                 raise Exception
