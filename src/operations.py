@@ -10,7 +10,7 @@ help_s = '''
 
     help - access help information
     info - access general information
-    analysis <dataset name> <max dangerous> - show all users that are flagged as dangerous according to prompted value
+    analysis <dataset name> <max dangerous> <output file name> - show all users that are flagged as dangerous according to prompted value
     '''
 
 info_s = '''
@@ -40,9 +40,9 @@ def handle_operations(argv_l: list, ROOT_DIR) -> None:
                 op_info()
 
             case "analysis":
-                op_dangerous_users(argv_l[2], int(argv_l[3]), argv_l[4], ROOT_DIR)
-                if len(argv_l) != 4:
+                if len(argv_l) != 5:
                     raise Exception
+                op_full_analysis(argv_l[2], int(argv_l[3]), argv_l[4], ROOT_DIR)
 
             case _:
                 raise Exception
@@ -72,7 +72,7 @@ def op_info() -> None:
 
 
 
-def op_dangerous_users(dataset_name: str, amt_dng_wds_for_flag: int, filename:str, ROOT_DIR) -> None:
+def op_full_analysis(dataset_name: str, amt_dng_wds_for_flag: int, filename:str, ROOT_DIR) -> None:
 
     try:
         data_path = os.path.join(ROOT_DIR, f"data/dataSets/{dataset_name}")
