@@ -6,7 +6,7 @@ from .utils import *
 
 # this is the fun part of all of this; where the user and message classes get used
 # basically updates and synthesizes/makes conclusions based on the data
-def analysis(in_users: list[User]) -> list[User]:
+def analysis(in_users: list[User], lower: int) -> list[User]:
 
     out = []
 
@@ -24,7 +24,6 @@ def analysis(in_users: list[User]) -> list[User]:
 
         out.append(u)
 
-    print(out)
     return out
 
 
