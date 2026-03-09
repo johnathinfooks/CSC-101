@@ -27,9 +27,10 @@ def save_output(func, file: str = "output.txt", *args, **kwargs):
     original = sys.stdout
 
     try:
-        with open(file, 'w') as f:
+        with open(f"analysis_res/{file}", 'w') as f:
             sys.stdout = f
             result = func(*args, **kwargs)
+
     finally:
         sys.stdout = original
     print(f"Output saved to {file}")
