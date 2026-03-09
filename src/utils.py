@@ -1,47 +1,6 @@
 import os
+import json
 
-from .user import *
-from .message import *
-
-def populate(dataset_path: str) -> dict[int, list[Message]] | None:
-
-    out: dict[int, list[Message]] = {}
-
-    try:
-        with open(dataset_path, "r") as dataset:
-            data = json.load(dataset)
-
-            for entry in data:
-                user_id = int(entry["id"])
-                msg_list: list[Message] = []
-
-                for msg in entry.get("messages", []):
-                    timestamp = int(msg["timestamp"])
-                    content = msg["content"]
-                    msg_list.append(Message(timestamp, content))
-
-                out[user_id] = msg_list
-
-
-    except FileNotFoundError as e:
-        print(f"File not found; {e}.")
-        return None
-    except:
-        print("Error.")
-        return None
-
-    return out
-
-def listDataSets() -> list[str]:
-    data_path = "dataSet"
-    files = []
-    if not os.path.exists(data_path):
-        print(f"Error: {data_path} not found")
-        return []
-    for i in os.listdir(data_path):
-        if i.endswith('.json'):
-            files.append(i)
-    return sorted(files)
 
 
 def clear_terminal():
@@ -53,5 +12,14 @@ def clear_terminal():
         # Command for Linux, macOS, etc.
         os.system('clear')
 
-def p_err(file: str, func: str, msg: str):
-    print(f"[ERROR]({file})({func}): '{msg}' ")
+
+
+def p_err(file: str, func: str, msg: str, crash: bool):
+    print(f"[ERROR]({file})({func}): {msg} ")
+    if crash:
+        print("Critical error. Exiting.")
+        exit()
+    else:
+        return
+
+

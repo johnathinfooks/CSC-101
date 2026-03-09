@@ -1,4 +1,9 @@
-from src.utils import p_err, populate
+import os
+
+from src.utils import *
+from src.analysis import *
+
+
 
 help_s = '''
     Valid input:
@@ -17,49 +22,52 @@ info_s = '''
     California Polytechnic State University, CSC-101
 '''
 
-def handle_operations(argv_l: list) -> int:
-
-    match argv_l[1]:
-
-        case "help":
-            op_help()
-
-        case "info":
-            op_info()
-
-        case "users":
-            try:
-                op_dangerous_users(int(argv_l[2]))
-            except:
-                p_err("operations", "handle_operations", "")
 
 
-    return 0
+def handle_operations(argv_l: list, ROOT_DIR) -> None:
 
-def op_help() -> int:
+    try:
+        match argv_l[1]:
+
+            case "help":
+                op_help()
+
+            case "info":
+                op_info()
+
+            case "users":
+                op_dangerous_users(argv_l[2], ROOT_DIR)
+
+    except Exception as e:
+        p_err("operations", "handle_operations", str(e), True)
+
+
+
+def op_help() -> None:
 
     try:
         print(help_s)
 
     except:
-        p_err("operations", "op_help", "")
-        return 1
+        p_err("operations", "op_help", "", False)
 
-    return 0
 
-def op_info() -> int:
+
+def op_info() -> None:
 
     try:
         print(info_s)
 
     except:
-        p_err("operations", "op_info", "")
-        return 1
+        p_err("operations", "op_info", "", False)
 
-    return 0
 
-def op_dangerous_users(inp: int) -> int:
-    name = input("Name of dataset: ")
-    data = populate()
-    print(data)
 
+def op_dangerous_users(inp: str, ROOT_DIR) -> None:
+    try:
+        # name = input("Name of dataset: ")
+        data_path = os.path.join(ROOT_DIR, f"data/dataSets/{inp}")
+        analysis(populate(data_path))
+
+    except Exception as e:
+        p_err("operations", "op_dangerous_user", str(e), False)

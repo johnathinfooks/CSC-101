@@ -1,24 +1,28 @@
-from src.user import *
-from src.message import *
-from src.utils import *
-from src.operations import *
+import os
 import sys
+
+from src.utils import p_err
+from src.operations import handle_operations
+
 
 help_s = "use 'help' for help to use tool"
 
-def main() -> int:
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+
+def main() -> None:
 
     try:
         # handle input initiate functionality
-        handle_operations(sys.argv)
+        handle_operations(sys.argv, ROOT_DIR)
 
-        return 0
-
-    except:
-        p_err("main", "main", "likely misinput")
+    except Exception as e:
+        p_err("main", "main", str(e), False)
         print(help_s)
-        return 1
 
-# initial
+
+
+# initial; starts here
 
 main()
