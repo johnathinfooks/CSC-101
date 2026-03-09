@@ -39,7 +39,7 @@ def handle_operations(argv_l: list, ROOT_DIR) -> None:
                 op_info()
 
             case "analysis":
-                op_dangerous_users(argv_l[2], int(argv_l[3]), ROOT_DIR)
+                op_dangerous_users(argv_l[2], int(argv_l[3]), argv_l[4], ROOT_DIR)
 
             case _:
                 raise Exception
@@ -69,11 +69,12 @@ def op_info() -> None:
 
 
 
-def op_dangerous_users(dataset_name: str, amt_dng_wds_for_flag: int, ROOT_DIR) -> None:
+def op_dangerous_users(dataset_name: str, amt_dng_wds_for_flag: int, filename:str, ROOT_DIR) -> None:
 
     try:
         data_path = os.path.join(ROOT_DIR, f"data/dataSets/{dataset_name}")
-        analysis(populate(data_path), amt_dng_wds_for_flag)
+        result = analysis(populate(data_path), amt_dng_wds_for_flag)
+        save_output(result, filename)
 
     except Exception as e:
         p_err("operations", "op_dangerous_user", str(e), False)

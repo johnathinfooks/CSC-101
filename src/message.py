@@ -1,5 +1,4 @@
 import json
-from src.utils import p_err
 
 class Message:
 
@@ -35,7 +34,6 @@ class Message:
             return amount_danger_words
 
         except Exception as e:
-            p_err("message", "check_malicious", str(e), False)
             return 0
 
 

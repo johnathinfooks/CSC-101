@@ -1,5 +1,5 @@
 import os
-import sys
+from .user import User
 import json
 
 
@@ -26,18 +26,8 @@ def p_err(file: str, func: str, msg: str, crash: bool):
 
 
 
-def save_output(func, file: str = "output.txt", *args, **kwargs):
-
-    original = sys.stdout
-
-    try:
-        with open(f"analysis_res/{file}", 'w') as f:
-            sys.stdout = f
-            result = func(*args, **kwargs)
-
-    finally:
-        sys.stdout = original
-    print(f"Output saved to {file}")
-    return result
-
+def save_output(lst:list[User], filename:str) -> None:
+    with open(f"results/{filename}.txt", "w") as f:
+        for obj in lst:
+            f.write(repr(obj))
 
