@@ -43,7 +43,13 @@ def handle_operations(argv_l: list, ROOT_DIR) -> None:
                 op_info()
 
             case "users":
-                op_dangerous_users(argv_l[2], ROOT_DIR)
+                save_output(
+                    op_dangerous_users,
+                    "output.txt",
+                    argv_l[2], 
+                    ROOT_DIR
+                    )
+
 
     except Exception as e:
         p_err("operations", "handle_operations", str(e), True)
