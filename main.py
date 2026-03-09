@@ -6,8 +6,6 @@ from src.operations import handle_operations
 
 
 
-help_s = "use 'help' for help to use tool"
-
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -20,7 +18,6 @@ def main() -> None:
 
     except Exception as e:
         p_err("main", "main", str(e), False)
-        print(help_s)
 
 
 

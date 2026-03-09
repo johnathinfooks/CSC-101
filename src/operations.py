@@ -10,8 +10,8 @@ help_s = '''
 
     help - access help information
     info - access general information
-    users - show all users that are flagged as dangerous according to prompted score
-'''
+    analysis <dataset name> <max dangerous> - show all users that are flagged as dangerous according to prompted value
+    '''
 
 info_s = '''
     ================================================
@@ -26,10 +26,6 @@ info_s = '''
 
 def handle_operations(argv_l: list, ROOT_DIR) -> None:
 
-    if len(argv_l) < 2:
-        print("use 'help' for help to use tool")
-        exit()
-
     try:
         match argv_l[1]:
 
@@ -42,8 +38,11 @@ def handle_operations(argv_l: list, ROOT_DIR) -> None:
             case "info":
                 op_info()
 
-            case "users":
+            case "analysis":
                 op_dangerous_users(argv_l[2], int(argv_l[3]), ROOT_DIR)
+
+            case _:
+                raise Exception
 
     except Exception as e:
         p_err("operations", "handle_operations", str(e), True)

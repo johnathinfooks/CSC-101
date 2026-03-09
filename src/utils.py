@@ -16,12 +16,15 @@ def clear_terminal():
 
 
 def p_err(file: str, func: str, msg: str, crash: bool):
+    print("\n[[ Use 'help' for help to use the tool ]]\n")
     print(f"[ERROR]({file})({func}): {msg} ")
     if crash:
         print("Critical error. Exiting.")
         exit()
     else:
         return
+
+
 
 def save_output(func, file: str = "output.txt", *args, **kwargs):
 
