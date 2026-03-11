@@ -1,5 +1,8 @@
 import json
 
+
+
+# Johnathin Fooks
 class Message:
 
     def __init__(self, in_timestamp: int, in_content: str) -> None:
@@ -33,6 +36,6 @@ class Message:
 
         except Exception as e:
             print(e)
-            return 1
+            return 0
 
 

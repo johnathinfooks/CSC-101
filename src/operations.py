@@ -11,7 +11,7 @@ help_s = '''
     help - access help information
     info - access general information
     list - list datasets
-    analysis <dataset name> <max dangerous> <output file name> - show all users that are flagged as dangerous according to prompted value
+    analysis <dataset name> <output file name> <max dangerous> - show all users that are flagged as dangerous according to prompted value
     '''
 
 info_s = '''
@@ -25,6 +25,7 @@ info_s = '''
 
 
 
+# Johnathin Fooks
 def handle_operations(argv_l: list, ROOT_DIR) -> None:
 
     try:
@@ -48,12 +49,7 @@ def handle_operations(argv_l: list, ROOT_DIR) -> None:
             case "analysis":
                 if len(argv_l) != 5:
                     raise Exception
-                op_full_analysis(argv_l[2], int(argv_l[3]), argv_l[4], ROOT_DIR)
-
-            case "analysis-custom":
-                if len(argv_l) != 2:
-                    raise Exception
-                op_custom_analysis()
+                op_full_analysis(argv_l[2], argv_l[3], int(argv_l[4]), ROOT_DIR)
 
             case _:
                 raise Exception
@@ -63,6 +59,7 @@ def handle_operations(argv_l: list, ROOT_DIR) -> None:
 
 
 
+# Vincent Le
 def op_help() -> None:
 
     try:
@@ -73,6 +70,7 @@ def op_help() -> None:
 
 
 
+# Vincent Le
 def op_info() -> None:
 
     try:
@@ -83,11 +81,15 @@ def op_info() -> None:
 
 
 
+# Vincent Le
 def op_list_datasets():
     try:
         files = os.listdir("data/dataSets/")
+        print("\n    Valid Datasets:")
+        print()
         for f in files:
-            print(f)
+            print('    ' + f)
+        print()
 
 
     except Exception as e:
@@ -95,16 +97,16 @@ def op_list_datasets():
 
 
 
-def op_full_analysis(dataset_name: str, amt_dng_wds_for_flag: int, filename:str, ROOT_DIR) -> None:
+# Vincent Le
+def op_full_analysis(dataset_name: str, out_filename: str, amt_dng_wds_for_flag: int, ROOT_DIR) -> None:
 
     try:
         data_path = os.path.join(ROOT_DIR, f"data/dataSets/{dataset_name}")
         result = analysis(populate(data_path), amt_dng_wds_for_flag)
-        save_output(result, filename)
+        save_output(result, out_filename)
 
     except Exception as e:
-        p_err("operations", "op_dangerous_user", str(e), False)
-
+        p_err("operations", "op_full_analysis", str(e), False)
 
 
 
