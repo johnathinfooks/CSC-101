@@ -2,8 +2,6 @@ import json
 
 class Message:
 
-
-
     def __init__(self, in_timestamp: int, in_content: str) -> None:
         self.timestamp = in_timestamp
         self.content = in_content
@@ -34,6 +32,7 @@ class Message:
             return amount_danger_words
 
         except Exception as e:
-            return 0
+            print(e)
+            return 1
 
 

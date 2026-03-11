@@ -31,15 +31,15 @@ def save_output(lst:list[User], filename:str) -> None:
         for obj in lst:
             f.write(repr(obj))
         f.write(f"\nList of malicious users:\n") 
-        for name in show_badUsers(lst):
+        for name in show_bad_users(lst):
             f.write(name + "\n")
 
 
 
-def show_badUsers(lst:list[User]) -> list[str]:
-    badList = []
+def show_bad_users(lst:list[User]) -> list[str]:
+    bad_list = []
     for user in lst:
         if user.malicious_flag:
-            badList.append(user.name)
-    return badList
+            bad_list.append(user.name)
+    return bad_list
 
