@@ -40,6 +40,11 @@ def save_output(lst:list[User], filename:str) -> None:
         if len(show_flagged_users(lst)) < 1:
             f.write("NO FLAGGED USERS\n")
 
-
-
-
+# Vincent Le
+def show_flagged_users(lst:list[User]) -> list[str]:
+    bad_list = []
+    for user in lst:
+        if user.malicious_flag:
+            s = f"<userid:{user.id}> {user.name}: For a total of {user.malicious_score} malicious words used"
+            bad_list.append(s)
+    return bad_list

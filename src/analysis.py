@@ -7,7 +7,7 @@ from .utils import *
 
 # Vincent Le
 # this is the fun part of all of this; where the user and message classes get used
-# basically updates and synthesizes/makes conclusions based on the data
+# basically updates and comes up with conclusions based on the data
 def analysis(in_users: list[User], lower: int) -> list[User]:
 
     out = []
@@ -66,13 +66,3 @@ def populate(dataset_path: str) -> list[User]:
         p_err("utils", "populate", str(e), True)
         return []
 
-
-
-# Vincent Le
-def show_flagged_users(lst:list[User]) -> list[str]:
-    bad_list = []
-    for user in lst:
-        if user.malicious_flag:
-            s = f"{user.id}  :  {user.name}"
-            bad_list.append(s)
-    return bad_list

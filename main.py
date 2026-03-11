@@ -23,5 +23,5 @@ def main() -> None:
 
 
 # initial; starts here
-
-main()
+if __name__ == "__main__":
+    main()
