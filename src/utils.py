@@ -2,6 +2,7 @@ import os
 from .user import User
 
 
+
 # Johnathin Fooks
 def clear_terminal():
     # Check if the operating system is Windows ('nt') or Posix (Linux, macOS, Unix)

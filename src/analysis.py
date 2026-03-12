@@ -69,4 +69,3 @@ def populate(dataset_path: str) -> list[User]:
     except Exception as e:
         p_err("utils", "populate", str(e), True)
         return []
-

@@ -83,7 +83,7 @@ def op_info() -> None:
 
 # Vincent Le
 def op_list_datasets():
-    
+
     try:
         files = os.listdir("data/dataSets/")
         print("\n    Valid Datasets:")
@@ -108,6 +108,3 @@ def op_full_analysis(dataset_name: str, out_filename: str, amt_dng_wds_for_flag:
 
     except Exception as e:
         p_err("operations", "op_full_analysis", str(e), False)
-
-
-
