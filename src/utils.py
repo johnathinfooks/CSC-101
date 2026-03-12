@@ -1,8 +1,5 @@
 import os
 from .user import User
-import json
-from .analysis import *
-
 
 
 # Johnathin Fooks
@@ -45,6 +42,6 @@ def show_flagged_users(lst:list[User]) -> list[str]:
     bad_list = []
     for user in lst:
         if user.malicious_flag:
-            s = f"<userid:{user.id}> {user.name}: For a total of {user.malicious_score} malicious words used"
+            s = f"{user.id}  :  {user.name}"
             bad_list.append(s)
     return bad_list
