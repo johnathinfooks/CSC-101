@@ -45,17 +45,16 @@ def populate(dataset_path: str) -> list[User]:
             data = json.load(f)
             user_data = json.load(g)
 
-        # binding id to name with dictionary
+        # binding id to name with dictionary; a lookup table
         user_lookup = {u["id"]: u["name"] for u in user_data}
 
         # initiating list of users
         for entry in data:
             id = entry["id"]
             if id in user_lookup:
-                msg_lst = [
-                    Message(m["timestamp"], m["content"])
-                    for m in entry["messages"]
-                ]
+
+                # list of message objects initialized called from the Message constructor's components
+                msg_lst = [ Message(m["timestamp"], m["content"]) for m in entry["messages"] ]
 
                 u = User(user_lookup[id], id, msg_lst)
                 out.append(u)

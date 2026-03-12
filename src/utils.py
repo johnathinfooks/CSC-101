@@ -9,7 +9,7 @@ def clear_terminal():
         # Command for Windows
         os.system('cls') 
     else:
-        # Command for Linux, macOS, etc.
+        # Command for Linux, mac
         os.system('clear')
 
 
@@ -36,6 +36,8 @@ def save_output(lst:list[User], filename:str) -> None:
             f.write(name + "\n")
         if len(show_flagged_users(lst)) < 1:
             f.write("NO FLAGGED USERS\n")
+
+
 
 # Vincent Le
 def show_flagged_users(lst:list[User]) -> list[str]:
