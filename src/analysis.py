@@ -10,26 +10,31 @@ from .utils import p_err
 # basically updates and comes up with conclusions based on the data
 def analysis(in_users: list[User], lower: int) -> list[User]:
 
-    out = []
+    try:
+        out = []
 
-    for user in in_users:
+        for user in in_users:
 
-        msg_h = user.message_history
+            msg_h = user.message_history
 
-        u = User(user.name, user.id, user.message_history)
+            u = User(user.name, user.id, user.message_history)
 
-        amount_dangerous = 0
-        for msg in msg_h:
-            amount_dangerous += msg.check_malicious()
+            amount_dangerous = 0
+            for msg in msg_h:
+                amount_dangerous += msg.check_malicious()
 
-        u.malicious_score = amount_dangerous
+            u.malicious_score = amount_dangerous
 
-        if u.malicious_score > int(lower):
-            u.malicious_flag = True
+            if u.malicious_score > int(lower):
+                u.malicious_flag = True
 
-        out.append(u)
+            out.append(u)
 
-    return out
+        return out
+
+    except Exception as e:
+        p_err("analysis", "analysis", str(e), False)
+        return []
 
 
 
