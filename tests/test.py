@@ -1,12 +1,10 @@
 import sys
 import os
 import unittest
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 from src.analysis import populate, analysis
 from src.user import User
 
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 TESTS_DIR = os.path.dirname(__file__)
 
 
