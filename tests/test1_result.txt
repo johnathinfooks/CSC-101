@@ -1,0 +1,15 @@
+
+ID: 4829137
+Name: Alice
+Message History: [0100: 'hello world DANGER001 DANGER002']
+Malicious Score: 2
+Malicious Flag: False
+
+ID: 8401957
+Name: Samuel
+Message History: [0200: 'DANGER010 DANGER020 DANGER030 DANGER040']
+Malicious Score: 4
+Malicious Flag: True
+
+===== FLAGGED USERS =====
+8401957  :  Samuel

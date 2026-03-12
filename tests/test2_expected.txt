@@ -1,0 +1,21 @@
+
+ID: 3794628
+Name: Ella
+Message History: [0050: 'good morning have a nice day']
+Malicious Score: 0
+Malicious Flag: False
+
+ID: 9257136
+Name: Owen
+Message History: [0300: 'DANGER005 DANGER006 go outside', 0400: 'see you DANGER007']
+Malicious Score: 3
+Malicious Flag: False
+
+ID: 7823641
+Name: Jack
+Message History: [0500: 'DANGER011 DANGER022 DANGER033 DANGER044 DANGER055']
+Malicious Score: 5
+Malicious Flag: True
+
+===== FLAGGED USERS =====
+7823641  :  Jack
